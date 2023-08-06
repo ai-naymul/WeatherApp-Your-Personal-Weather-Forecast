@@ -15,7 +15,7 @@ Welcome to WeatherApp, your go-to solution for obtaining real-time weather updat
 
 ## How to Use
 
-1. **Clone the Repository:** Clone this repository to your local machine using `git clone <repository_url>`.
+1. **Clone the Repository:** Clone this repository to your local machine using `git clone https://github.com/ai-naymul/WeatherApp-Your-Personal-Weather-Forecast.git`.
 
 2. **Install Dependencies:** If required, install the necessary dependencies using `pip install -r requirements.txt`.
 
