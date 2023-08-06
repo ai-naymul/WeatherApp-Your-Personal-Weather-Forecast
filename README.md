@@ -19,7 +19,7 @@ Welcome to WeatherApp, your go-to solution for obtaining real-time weather updat
 
 2. **Install Dependencies:** If required, install the necessary dependencies using `pip install -r requirements.txt`.
 
-3. **Run the App:** Execute the main Python file (e.g., `weather_app.py`) to launch the WeatherApp interface.
+3. **Run the App:** Execute the main Python file (e.g., `main.py`) to launch the WeatherApp interface.
 
 4. **Input City:** Enter the city for which you want to check the weather. The app will provide you with the latest weather information.
 
