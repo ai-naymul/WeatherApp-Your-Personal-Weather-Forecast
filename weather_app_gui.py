@@ -1,5 +1,5 @@
 from tkinter import *
-from main import FetchWeather
+from fetch_weather_data import FetchWeather
 tk = Tk()
 weather = FetchWeather()
 tk.title("WeatherApp - Your Personal Weather Forecast")
