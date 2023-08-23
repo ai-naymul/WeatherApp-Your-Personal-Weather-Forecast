@@ -16,6 +16,15 @@ def fetch_weather():
     time.config(text=f"Time: {weather.time}")
     condition.config(text=f"Condition: {weather.status}")
 
+## Reset function
+def reset():
+    city_entry.delete(0, END)
+    temp.config(text="Temperature: ")
+    humidity.config(text="Humidity: ")
+    time.config(text="Time: ")
+    condition.config(text="Condition: ")
+
+
 ##Layout
 city_label = Label(text="Enter The City Name: ")
 
@@ -33,6 +42,10 @@ time = Label(weather_label_frame,text="Time: ")
 
 condition = Label(weather_label_frame,text="Condition: ")
 
+
+reset_button = Button(text="Reset", command=reset, width=25)
+
+
 #Seting position
 
 city_label.grid(row=0, column=0)
@@ -44,7 +57,7 @@ humidity.grid(row=1,column=0,pady=5,padx=10,sticky='w')
 time.grid(row=2,column=0,pady=5,padx=10,sticky='w')
 condition.grid(row=3,column=0,padx=10,pady=5,sticky='w')
 
-
+reset_button.grid(row=4,column=1, padx=10)
 
 tk.mainloop()
 
