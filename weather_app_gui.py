@@ -1,10 +1,18 @@
 from tkinter import *
 from fetch_weather_data import FetchWeather
+import geocoder
+
 tk = Tk()
 weather = FetchWeather()
 tk.title("WeatherApp - Your Personal Weather Forecast")
 tk.minsize(width=400,height=200)
 tk.config(padx=20,pady=10)
+
+
+location = geocoder.ip('me')
+latt = location.latlng[0]
+lng = location.latlng[1]
+
 
 ## Weather fetching from the main file
 def fetch_weather():
@@ -45,13 +53,14 @@ condition = Label(weather_label_frame,text="Condition: ")
 
 reset_button = Button(text="Reset", command=reset, width=25)
 
+get_current_location_weather = Button(text="Get Current Location Weather Info", width=31)
 
 #Seting position
 
 city_label.grid(row=0, column=0)
 city_entry.grid(row=0, column=1)
 fetch_data.grid(row=0,column=2,padx=20)
-weather_label_frame.grid(row=1,column=0, columnspan=3, padx=20, pady=20, sticky="ew")
+weather_label_frame.grid(row=2,column=0, columnspan=3, padx=20, pady=20, sticky="ew")
 temp.grid(row=0, column=0, padx=10, pady=5, sticky="w")
 humidity.grid(row=1,column=0,pady=5,padx=10,sticky='w')
 time.grid(row=2,column=0,pady=5,padx=10,sticky='w')
@@ -59,7 +68,9 @@ condition.grid(row=3,column=0,padx=10,pady=5,sticky='w')
 
 reset_button.grid(row=4,column=1, padx=10)
 
+get_current_location_weather.grid(row=1,column=1, pady=10)
 tk.mainloop()
+
 
 
 
