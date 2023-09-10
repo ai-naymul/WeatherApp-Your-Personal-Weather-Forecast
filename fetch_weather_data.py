@@ -35,3 +35,27 @@ class FetchWeather:
             print(f"An error occurred. Status Code: {response.status_code}")
 
 
+    def fetch_weather_by_coordinates(self, lat,lng):
+        try:
+            response = req.get(f"http://api.weatherapi.com/v1/current.json?key={self.API_KEY}&q={lat},{lng}")
+            response.raise_for_status()
+        except req.RequestException as e:
+            print(f"Request Failed due to Network Error. Error Code: {response.status_code}")
+            return
+        if response.status_code == 200:
+            data = response.json()
+            answer = data["current"]
+            self.time = data['last_updated']
+            self.temp = data['temp_c']
+            self.status = data['condition']['text']
+            self.humidity = data['humidity']
+            output = f"Temperature: {self.temp} °C\n" \
+                     f"Humidity: {self.humidity}%\n" \
+                     f"Time: {self.time}\n" \
+                     f"Conditions: {self.status}\n"
+            print(output)
+        elif response.status_code == 1006:
+            print("No matching location found.")
+        else:
+            print(f"An error occurred. Status Code: {response.status_code}")
+
