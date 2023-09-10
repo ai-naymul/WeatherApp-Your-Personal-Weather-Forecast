@@ -45,10 +45,10 @@ class FetchWeather:
         if response.status_code == 200:
             data = response.json()
             answer = data["current"]
-            self.time = data['last_updated']
-            self.temp = data['temp_c']
-            self.status = data['condition']['text']
-            self.humidity = data['humidity']
+            self.time = answer['last_updated']
+            self.temp = answer['temp_c']
+            self.status = answer['condition']['text']
+            self.humidity = answer['humidity']
             output = f"Temperature: {self.temp} °C\n" \
                      f"Humidity: {self.humidity}%\n" \
                      f"Time: {self.time}\n" \

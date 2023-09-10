@@ -8,14 +8,19 @@ tk.title("WeatherApp - Your Personal Weather Forecast")
 tk.minsize(width=400,height=200)
 tk.config(padx=20,pady=10)
 
-
-location = geocoder.ip('me')
-latt = location.latlng[0]
-lng = location.latlng[1]
+def get_weather_by_location():
+    location = geocoder.ip('me')
+    latt = location.latlng[0]
+    lng = location.latlng[1]
+    weather.fetch_weather_by_coordinates(latt,lng)
+    temp.config(text=f"Temperature: {weather.temp}")
+    humidity.config(text=f"Humidity: {weather.humidity}%")
+    time.config(text=f"Time: {weather.time}")
+    condition.config(text=f"Condition: {weather.status}")
 
 
 ## Weather fetching from the main file
-def fetch_weather():
+def get_weather():
     USER_CHOICE = city_entry.get().title()
     weather.fetch_weather(USER_CHOICE)
     # Update labels with fetched weather data
@@ -38,7 +43,7 @@ city_label = Label(text="Enter The City Name: ")
 
 city_entry = Entry()
 
-fetch_data = Button(text='Fetch Weather', command=fetch_weather)
+fetch_data = Button(text='Fetch Weather', command=get_weather)
 
 weather_label_frame = LabelFrame(text="Weather Info")
 
@@ -53,7 +58,7 @@ condition = Label(weather_label_frame,text="Condition: ")
 
 reset_button = Button(text="Reset", command=reset, width=25)
 
-get_current_location_weather = Button(text="Get Current Location Weather Info", width=31)
+get_current_location_weather = Button(text="Get Current Location Weather Info", width=31, command=get_weather_by_location)
 
 #Seting position
 
